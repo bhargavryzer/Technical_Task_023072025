@@ -1,8 +1,8 @@
 # Technical_Task_023072025
 
-# 🧠 Ryzer — ERC-3643 Smart Contract Challenge
+#  Ryzer — ERC-3643 Smart Contract Challenge
 
-## 📌 Overview
+##  Overview
 
 Welcome to the Ryzer candidate evaluation task!
 
@@ -11,12 +11,12 @@ We are building **Ryzer.app**, a platform for the **tokenization of real-world a
 You are expected to **fork this repository**, complete the task, and submit a **pull request (PR)** for review.
 
 
-## 🎯 Objective
+##  Objective
 
 Create and deploy a basic **ERC-3643-based RWA token issuance system** that simulates tokenizing a real-world asset like real estate, bonds, or physical gold.
 
 
-## 🛠️ Requirements
+##  Requirements
 
 ### Core Task
 
@@ -44,7 +44,7 @@ Create and deploy a basic **ERC-3643-based RWA token issuance system** that simu
    Script to onboard new investors and issue tokens using CLI or tests.
 
 
-## 📁 Suggested File Structure
+## Suggested File Structure
 
 /contracts
   - RWAAssetToken.sol
@@ -60,7 +60,7 @@ Create and deploy a basic **ERC-3643-based RWA token issuance system** that simu
 
 /hardhat.config.ts or foundry.toml
 
-## 🧪 Bonus Points (Optional Enhancements)
+## Bonus Points (Optional Enhancements)
 
 * Use **Foundry** for ultra-fast testing (or support both Hardhat and Foundry).
 * Add **Merkle Tree-based identity verification**.
@@ -68,7 +68,7 @@ Create and deploy a basic **ERC-3643-based RWA token issuance system** that simu
 * Include a minimal **frontend dashboard** (React or plain HTML) for testing.
 
 
-## 🔧 Installation & Setup
+##  Installation & Setup
 
 ```bash
 # If using Hardhat
@@ -81,7 +81,7 @@ forge build
 ```
 
 
-## 🧑‍💻 Developer Guidelines
+##  Developer Guidelines
 
 * Write clear and modular code.
 * Include relevant comments and documentation.
@@ -89,7 +89,7 @@ forge build
 * README updates are welcome if you improve or change the repo structure.
 
 
-## 🚀 How to Submit
+##  How to Submit
 
 1. **Fork** this repository to your GitHub.
 2. Complete the task on your fork.
@@ -101,12 +101,12 @@ forge build
    * (Optional) A demo video or screenshots
 
 
-## 🧠 Why This Task?
+##  Why This Task?
 
 This challenge reflects the core use case of **Ryzer**—secure, compliant, permissioned tokenization of real-world assets using **ERC-3643**, an emerging standard for institutional-grade digital assets.
 
 
-## 📚 References
+##  References
 
 * [ERC-3643 Standard](https://github.com/erc3643/erc3643)
 * [OpenZeppelin Contracts](https://docs.openzeppelin.com/contracts)
@@ -114,7 +114,7 @@ This challenge reflects the core use case of **Ryzer**—secure, compliant, perm
 * [Hardhat Docs](https://hardhat.org/)
 
 
-## 🗓️ Deadline
+##  Deadline
 
 Please submit your PR within **4 days** of receiving this task.
 
