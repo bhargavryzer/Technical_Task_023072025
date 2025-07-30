@@ -47,7 +47,25 @@ This project consists of three main components working together to create a comp
 - `getIdentity(address)` - Retrieve investor details
 
 ### Frontend Dashboard (`frontend/`)
-- React-based web interface for interacting with the RWA tokens
+
+**Modern React Interface for RWA Token Management**
+
+- **Technology Stack**: React 18 + Vite + Tailwind CSS + ethers.js
+- **Wallet Integration**: Seamless MetaMask connection and network management
+- **User Interfaces**:
+  - **Investor Dashboard**: Token balance, transfer functionality, identity status
+  - **Admin Panel**: Token issuance, identity registration, compliance management
+- **Key Features**:
+  - Real-time balance updates and transaction status
+  - Role-based UI access (Admin, Issuer, Agent permissions)
+  - Mobile-responsive design with modern UI components
+  - Comprehensive error handling and user feedback
+  - Network detection and automatic switching to Anvil local network
+
+**Main Components:**
+- `ConnectWallet.jsx` - MetaMask integration and wallet management
+- `InvestorDashboard.jsx` - Main interface for token holders
+- `AdminPanel.jsx` - Administrative controls for platform management
 - Built with Create React App and ethers.js for blockchain integration
 
 ### Deployment & Testing
@@ -214,15 +232,50 @@ forge coverage
 #### Start development server
 ```bash
 cd frontend
-npm start
+npm run dev
 # App will be available at http://localhost:3000
 ```
+
+#### Quick Start Frontend
+For the fastest setup, use the provided start script:
+```bash
+cd frontend
+./start.sh  # Automated setup and start
+```
+
+#### MetaMask Configuration
+1. **Add Anvil Network**:
+   - Network Name: `Anvil Local`
+   - RPC URL: `http://127.0.0.1:8545`
+   - Chain ID: `31337`
+   - Currency Symbol: `ETH`
+
+2. **Import Test Account** (for testing):
+   ```
+   Private Key: 0xac0974bec39a17e36ba4a6b4d238ff944bacb478cbed5efcae784d7bf4f2ff80
+   Address: 0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266
+   ```
+
+#### Using the Dashboard
+
+**For Investors:**
+- Connect MetaMask wallet
+- View token balance and transaction history
+- Transfer tokens to other verified users
+- Check identity verification status
+
+**For Administrators:**
+- Access admin panel at `/admin`
+- Issue new RWA tokens to verified users
+- Register and verify user identities
+- Set compliance restrictions by country
+- Manage platform permissions
 
 #### Build for production
 ```bash
 cd frontend
 npm run build
-# Build files will be in frontend/build/
+# Build files will be in frontend/dist/
 ```
 
 #### Environment Setup
@@ -425,6 +478,13 @@ forge script script/deploy.s.sol \
 
 ## 📚 Documentation & Resources
 
+### 📖 Comprehensive Guides
+
+- **[Quick Start Guide](./QUICKSTART.md)** - Get running in under 5 minutes
+- **[Architecture Documentation](./ARCHITECTURE.md)** - Deep dive into system design
+- **[Deployment Guide](./DEPLOYMENT.md)** - Production deployment instructions
+- **[Frontend Documentation](./frontend/README.md)** - React dashboard user guide
+
 ### Smart Contract Documentation
 
 #### RWAAssetToken Interface
@@ -586,3 +646,4 @@ The IdentityRegistry is designed to work with external KYC providers:
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
 4. Push to the branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
+# ERC-3643-Invastment
