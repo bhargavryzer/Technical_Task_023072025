@@ -1,70 +1,212 @@
-# Getting Started with Create React App
+# RWA Tokenization Platform - Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern React-based dashboard for managing Real-World Asset (RWA) tokenization built with Vite, Tailwind CSS, and ethers.js.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+### For Investors
+- **Wallet Connection**: Connect MetaMask wallet to interact with the platform
+- **Token Balance**: View your RWA token balance and holdings
+- **Transfer Tokens**: Send tokens to other verified users
+- **Identity Status**: Check your KYC/verification status
+- **Real-time Updates**: Automatic refresh of balances and status
 
-### `npm start`
+### For Administrators
+- **Token Issuance**: Issue new RWA tokens to verified users
+- **Token Redemption**: Redeem tokens from circulation
+- **Identity Management**: Register and verify user identities
+- **Compliance Controls**: Set transfer restrictions by country
+- **Role-based Access**: Different permissions for Admin, Issuer, and Agent roles
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technology Stack
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React 18**: Modern functional components with hooks
+- **Vite**: Fast build tool and development server
+- **Tailwind CSS**: Utility-first CSS framework
+- **ethers.js v6**: Ethereum blockchain interaction
+- **React Router**: Client-side routing
+- **React Hot Toast**: User-friendly notifications
+- **Lucide React**: Beautiful icons
 
-### `npm test`
+## Getting Started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+### Prerequisites
 
-### `npm run build`
+- Node.js 16+ and npm
+- MetaMask browser extension
+- Local Anvil blockchain running on port 8545
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Installation
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+```bash
+# Navigate to frontend directory
+cd frontend
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+# Install dependencies
+npm install
 
-### `npm run eject`
+# Start development server
+npm run dev
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+The application will be available at `http://localhost:3000`.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Environment Setup
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. **Start Local Blockchain**:
+   ```bash
+   # In the root directory
+   anvil
+   ```
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. **Deploy Contracts**:
+   ```bash
+   # In the root directory
+   forge script script/deploy.s.sol --rpc-url http://127.0.0.1:8545 --broadcast
+   ```
 
-## Learn More
+3. **Configure MetaMask**:
+   - Add Anvil network (Chain ID: 31337, RPC: http://127.0.0.1:8545)
+   - Import test accounts from Anvil
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+## Usage Guide
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Connecting Your Wallet
 
-### Code Splitting
+1. Click "Connect Wallet" button
+2. Approve MetaMask connection
+3. Ensure you're on Anvil network (Chain ID: 31337)
+4. If not on correct network, click "Switch Network"
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+### Investor Dashboard
 
-### Analyzing the Bundle Size
+Once connected, you'll see:
+- **Token Balance**: Your current RWA token holdings
+- **Total Supply**: Total tokens in circulation
+- **Identity Status**: Your verification status
+- **Transfer Form**: Send tokens to other users
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+### Admin Panel
 
-### Making a Progressive Web App
+Access via `/admin` route if you have admin privileges:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+#### Token Operations (Admin/Issuer)
+- **Issue Tokens**: Create new tokens for verified users
+- **Redeem Tokens**: Remove tokens from circulation
 
-### Advanced Configuration
+#### Identity Management (Admin/Agent)
+- **Register Identity**: Add KYC data for users
+- **Set Verification**: Mark users as verified
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+#### Compliance Management (Admin only)
+- **Country Restrictions**: Block/allow transfers by country
+- **Transfer Rules**: Set compliance policies
 
-### Deployment
+## Smart Contract Integration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+The frontend interacts with three main contracts:
 
-### `npm run build` fails to minify
+### RWAAssetToken
+- **Address**: `0x5fbdb2315678afecb367f032d93f642f64180aa3`
+- **Functions**: Transfer, issue, redeem tokens
+- **Events**: Transfer, Issued, Redeemed
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### IdentityRegistry
+- **Address**: `0x9fe46736679d2d9a65f0992f2272de9f3c7fa6e0`
+- **Functions**: Register and verify identities
+- **Events**: IdentityRegistered
+
+### ComplianceModule
+- **Address**: `0xe7f1725e7734ce288f8367e1bb143e90bb3f0512`
+- **Functions**: Check transfer compliance
+- **Events**: TransferRestrictionSet
+
+## Component Architecture
+
+```
+src/
+├── components/
+│   ├── ConnectWallet.jsx      # Wallet connection UI
+│   ├── InvestorDashboard.jsx  # Main investor interface
+│   └── AdminPanel.jsx         # Administrative controls
+├── hooks/
+│   └── useWallet.js          # Wallet state management
+├── utils/
+│   └── contracts.js          # Contract utilities and ABIs
+├── App.jsx                   # Main application component
+└── main.jsx                  # Application entry point
+```
+
+## Development Commands
+
+```bash
+# Start development server
+npm run dev
+
+# Build for production
+npm run build
+
+# Preview production build
+npm run preview
+
+# Run linting
+npm run lint
+```
+
+## Error Handling
+
+The application includes comprehensive error handling:
+- **Connection Errors**: MetaMask not installed or connection failed
+- **Network Errors**: Wrong network or RPC issues
+- **Transaction Errors**: Failed transactions with user-friendly messages
+- **Permission Errors**: Insufficient roles or permissions
+
+## Security Considerations
+
+- **Role-based Access**: UI restricts functions based on user roles
+- **Input Validation**: All forms validate user input
+- **Transaction Confirmation**: Users must confirm all blockchain transactions
+- **Error Boundaries**: Graceful handling of React component errors
+
+## Troubleshooting
+
+### Common Issues
+
+1. **MetaMask not connecting**
+   - Ensure MetaMask is installed and unlocked
+   - Check browser permissions
+
+2. **Wrong network**
+   - Click "Switch Network" button
+   - Manually add Anvil network in MetaMask
+
+3. **Transaction failures**
+   - Check account has sufficient ETH for gas
+   - Verify contract addresses are correct
+   - Ensure user has required permissions
+
+4. **Balance not updating**
+   - Click refresh button
+   - Check MetaMask account is correct
+
+### Development Issues
+
+1. **Build errors**
+   - Clear node_modules and reinstall
+   - Check Node.js version compatibility
+
+2. **Tailwind CSS not working**
+   - Verify postcss.config.js is correct
+   - Check tailwind.config.js paths
+
+## Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Make your changes
+4. Test thoroughly
+5. Submit a pull request
+
+## License
+
+This project is licensed under the MIT License.
